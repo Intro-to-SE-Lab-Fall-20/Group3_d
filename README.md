@@ -19,8 +19,8 @@ The objective is to design and develop an email client that will have a number o
 - A user should be able to send attachments (image, files etc.) along with an email 
 
 ## Features
-Register email using username and password
-Login using their credentials
-Send and receive emails
-Search emails and forward them
-Send attachments
+- Register email using username and password
+- Login using their credentials
+- Send and receive emails
+- Search emails and forward them
+- Send attachments
