@@ -3,10 +3,10 @@
 ## Members
 
 The project group consists of four members:
-1. Shelton Ellis(SheltonEllis)
-2. Rishav Sharma(rishav1325)
-3. Spurthi Buchireddy(spurthib)
-4. David Penfield(dep153)
+1. Shelton Ellis (SheltonEllis)
+2. Rishav Sharma (rishav1325)
+3. Spurthi Buchireddy (spurthib)
+4. David Penfield (dep153)
 
 ## Project Description
 The Email Client is a web based application. The project will follow Agile model and will be developed in four sprints.
