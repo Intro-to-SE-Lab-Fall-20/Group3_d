@@ -10,21 +10,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <?php
 include("connection.php");
- if(isset ($_POST['Submit'])){
-    $body =$_POST['body'];
-    $to_email=$_POST['to_email'];
-    $from_email=$_POST['from_email'];
-    $subject=$_POST['subject'];
-    $q= "INSERT INTO message (subject,body,to_email,from_email) VALUES ('".$subject."','".$body."','".$to_email."','".$from_email."')";
-    if( mysqli_query($con, $q)) {
-    $to = $to_email;
-    $subject = $subject;
-    $body = $body;
-    $headers = $from_email;
-    mail($to, $subject, $body, $headers);
-    }
 
-  }
 ?>
 
 <!DOCTYPE html>
@@ -41,54 +27,74 @@ include("connection.php");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style type="text/css">
-        body{ font: 12px sans-serif; text-align: center; }
+        body{ font: 12px sans-serif; text-align: center; background-image:url('background.jpg');}
+        table.center{
+          margin-left: auto;
+          margin-right: auto;
+        }
     </style>
 </head>
 
 <body>
     <div class="page-header">
         <h1>Hi, <?php echo $_SESSION["username"]; ?>.</h1>
+        <h2>Welcome to Group3 mail</h2>
     </div>
-    <div class="container bootdey">
-    <div class="email-app">
-        <button data-toggle="collapse" data-target="#demo" class="btn btn-danger btn-block mb-4">New Email</button>
-            <div id="demo" class="collapse">
-        <main>
-            <form method="post">
-                <div class="form-row mb-3">
-                    <label for="to" class="col-2 col-sm-1 col-form-label">To:</label>
-                    <div class="col-10 col-sm-11">
-                        <input type="email" name="to_email" class="form-control" id="to" placeholder="Type email">
-                    </div>
-                </div>
-                <div class="form-row mb-3">
-                    <label for="cc" class="col-2 col-sm-1 col-form-label">From:</label>
-                    <div class="col-10 col-sm-11">
-                        <input type="email" name="from_email" class="form-control" id="from" placeholder="Type email">
-                    </div>
-                </div>
-                <div class="form-row mb-3">
-                    <label for="cc" class="col-2 col-sm-1 col-form-label">Subject</label>
-                    <div class="col-10 col-sm-11">
-                        <input type="text" name="subject" class="form-control" id="from" placeholder="Type subject">
-                    </div>
-                </div>
+
+	 </div>
+    <tr>
+    <td width="158" height="572" valign="top">
+	<div style="margin-top:50px; color:red">
+    <a href="homepage.php?chk=compose" class="btn btn-primary">COMPOSE</a><br/><br/>
+	<a href="homepage.php?chk=inbox" class="btn btn-primary">INBOX</a><br/><br/>
+	<a href="homepage.php?chk=sent" class="btn btn-primary">SENT</a><br/><br/>
+	<a href="homepage.php?chk=trash" class="btn btn-primary">TRASH</a><br/><br/>
+    <a href="homepage.php?chk=search" class="btn btn-primary">Search Email</a><br/><br/>
+	
+	
+	</div>
+	</td>
+    <td width="660" valign="top">
+			
+			
+		<?php
+		
+		@$chk=$_REQUEST['chk'];
+			
+			if($chk=="compose")
+			{
+			include_once('email.php');
+			}
+			if($chk=="sent")
+			{
+			include_once('sent.php');
+			}
+			if($chk=="trash")
+			{
+			include_once('trash.php');
+			}
+			if($chk=="inbox")
+			{
+			include_once('inbox.php');
+			}
+            if($chk=="search")
+			{
+			include_once('search.php');
+			}
+			
+		?>
+		
+		<!--inbox -->
+
+		
+	</td>
+    <td width="135">&nbsp;</td>
+  </tr>
+    <?php
 
 
-            <div class="row">
-                <div class="col-sm-11 ml-auto">
-                    <div class="form-group mt-4">
-                        <textarea class="form-control" id="message" name="body" rows="12" placeholder="Click here to reply"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" name="Submit" class="btn btn-success">Send</button>
-                    </div>
-            </div>
-        </form>
-        </main>
-    </div>
-    </div>
-    </div>
+
+?>
     <p>
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
         <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>

@@ -38,5 +38,35 @@ if(mysqli_query($link, $sql)){
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 
+$sql = "CREATE TABLE emails (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    sender VARCHAR(50) NOT NULL,
+    recipient VARCHAR(50) NOT NULL,
+    subject VARCHAR(100) NOT NULL,
+    email VARCHAR(4000) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)";
+if(mysqli_query($link, $sql)){
+    echo "Table emails created successfully.";
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+
+$sql = "CREATE TABLE trash (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    sender VARCHAR(50) NOT NULL,
+    recipient VARCHAR(50) NOT NULL,
+    subject VARCHAR(100) NOT NULL,
+    email VARCHAR(4000) NOT NULL,
+    Deleted_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)";
+  
+
+if(mysqli_query($link, $sql)){
+    echo "Table trash created successfully.";
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+
 mysqli_close($link);
 ?>
