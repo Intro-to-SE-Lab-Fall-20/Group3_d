@@ -23,4 +23,5 @@ The objective is to design and develop an email client that will have a number o
 - Login using their credentials
 - Send and receive emails
 - Search emails and forward them
-- Send attachments
+- Send attachment
+
