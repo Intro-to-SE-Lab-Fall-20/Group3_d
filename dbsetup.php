@@ -60,10 +60,24 @@ $sql = "CREATE TABLE trash (
     email VARCHAR(4000) NOT NULL,
     Deleted_at DATETIME DEFAULT CURRENT_TIMESTAMP
 )";
-  
+
 
 if(mysqli_query($link, $sql)){
     echo "Table trash created successfully.";
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+
+$sql = "CREATE TABLE notes (
+    id VARCHAR(100) NOT NULL,
+    subject VARCHAR(100) NOT NULL,
+    email VARCHAR(5000) NOT NULL,
+    Created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)";
+
+
+if(mysqli_query($link, $sql)){
+    echo "Notes created successfully.";
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
